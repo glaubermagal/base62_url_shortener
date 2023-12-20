@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:14.9
+    ports:
+      - 5432:5432
+    command: postgres -D /var/lib/postgresql/data -F -c logging_collector=on
+    volumes:
+      - ./data/dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: blue_coding
+      POSTGRES_HOST: db
+      PGDATA: /var/lib/postgresql/data
+      LOGGING_COLLECTOR: 'on'
+  server:
+    build: .
+    working_dir: /server
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 3; done; python manage.py runserver 0.0.0.0:8000'
+    volumes:
+      - ./:/server
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  celery:
+    image: celery5:latest
+    build: .
+    command: celery -A django_project worker --loglevel=info
+    volumes:
+      - ./:/server
+    depends_on:
+      - db
+      - redis
+      - server
