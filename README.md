@@ -59,7 +59,38 @@ python manage.py test
 Example output:
 
 ```json
-[{"long_url":"https://agilemanifesto.org/","short_url":"http://localhost:8000/y","title":"Manifesto for Agile Software Development"},{"long_url":"https://cloud.google.com/duet-ai?hl=en","short_url":"http://localhost:8000/z","title":"Duet AI for Developers"},{"long_url":"https://docs.python.org/3/tutorial/modules.html","short_url":"http://localhost:8000/10","title":"6. Modules — Python 3.12.1 documentation"},{"long_url":"https://cloud.google.com/code/docs/vscode/auth_success","short_url":"http://localhost:8000/11","title":"Cloud Code for VS Code is now authorized to access your account  |  Google Cloud"},{"long_url":"https://accounts.binance.com/en/register","short_url":"http://localhost:8000/12","title":"Bitcoin Exchange | Cryptocurrency Exchange | Binance"},{"long_url":"https://jsonformatter.org/","short_url":"http://localhost:8000/13","title":"Best JSON Formatter and JSON Validator: Online JSON Formatter"}]
+[
+    {
+        "long_url": "https://agilemanifesto.org/",
+        "short_url": "http://localhost:8000/y",
+        "title": "Manifesto for Agile Software Development"
+    },
+    {
+        "long_url": "https://cloud.google.com/duet-ai?hl=en",
+        "short_url": "http://localhost:8000/z",
+        "title": "Duet AI for Developers"
+    },
+    {
+        "long_url": "https://docs.python.org/3/tutorial/modules.html",
+        "short_url": "http://localhost:8000/10",
+        "title": "6. Modules — Python 3.12.1 documentation"
+    },
+    {
+        "long_url": "https://cloud.google.com/code/docs/vscode/auth_success",
+        "short_url": "http://localhost:8000/11",
+        "title": "Cloud Code for VS Code is now authorized to access your account  |  Google Cloud"
+    },
+    {
+        "long_url": "https://accounts.binance.com/en/register",
+        "short_url": "http://localhost:8000/12",
+        "title": "Bitcoin Exchange | Cryptocurrency Exchange | Binance"
+    },
+    {
+        "long_url": "https://jsonformatter.org/",
+        "short_url": "http://localhost:8000/13",
+        "title": "Best JSON Formatter and JSON Validator: Online JSON Formatter"
+    }
+]
 ```
 
 2. **Shorten a URL:**
@@ -68,7 +99,9 @@ Example output:
    ```
 
 ```json
-{"short_url":"http://localhost:8000/y"}
+{
+    "short_url": "http://localhost:8000/y"
+}
 ```
 
 
