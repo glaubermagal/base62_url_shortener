@@ -53,7 +53,7 @@ docker-compose exec server bash
 Then, run the tests:
 
 ```bash
-python manage.py test
+python manage.py test apps/*
 ```
 
 ## Usage
