@@ -24,14 +24,14 @@ class RedirectUrlView(RedirectView):
         
         raise Http404("Not Found")
 
-class MostVisitedListView(generics.ListAPIView):
+class MostVisitedUrlsListView(generics.ListAPIView):
     serializer_class = URLsSerializer
 
     def get_queryset(self):
         queryset = URLs.objects.all().order_by('-counter')[:100]
         return queryset
 
-class CreateURLView(generics.CreateAPIView):
+class ShortenURLView(generics.CreateAPIView):
     serializer_class = URLsSerializer
 
     def is_valid_url(self, url):
