@@ -1,5 +1,7 @@
 from django.test import TestCase
-from .utils import decimal_to_base62
+
+from ..utils import decimal_to_base62
+
 
 class Base62ConversionTest(TestCase):
     def test_decimal_to_base62(self):
