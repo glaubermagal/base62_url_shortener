@@ -3,8 +3,8 @@ def decimal_to_base62(decimal_num):
     base62_num = ""
 
     while decimal_num > 0:
-        remainder = decimal_num % 66
+        remainder = decimal_num % 62
         base62_num = characters[remainder] + base62_num
-        decimal_num //= 66
+        decimal_num //= 62
 
     return base62_num if base62_num else "0"
