@@ -11,7 +11,7 @@ from .serializers import URLsSerializer
 
 
 class RedirectUrlView(RedirectView):
-    permanent = False
+    permanent = True
 
     def get_redirect_url(self, *args, **kwargs):
         base62_id = self.kwargs.get('base62_id')
