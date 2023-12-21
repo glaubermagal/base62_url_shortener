@@ -15,13 +15,13 @@ def fetch_html_title(url_id):
 
 def get_html_title(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10000)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
         title_tag = soup.title
         if title_tag:
             return title_tag.string.strip()
-        else:
-            return "No title found"
+        
+        return "No title found"
     except requests.RequestException as e:
         return f"Error: {str(e)}"
