@@ -7,7 +7,7 @@ from .tasks import fetch_html_title
 
 class URLs(models.Model):
     base62_id = models.CharField(null=True, unique=True)
-    title = models.TextField(null=True)
+    title = models.TextField(null=True, blank=True)
     long_url = models.URLField(unique=True)
     counter = models.IntegerField(default=0)
 

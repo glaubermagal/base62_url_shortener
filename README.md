@@ -27,6 +27,13 @@ git clone git@github.com:glaubermagal/blue_coding_test.git
 cd blue_coding_test
 ```
 
+Create a local_settings.py file in django_project folder with the following content:
+
+```python
+BASE_URL = 'http://localhost:8000'
+```
+
+
 ## Running the Project
 
 Use Docker Compose to start the project:
@@ -104,11 +111,25 @@ Example output:
 }
 ```
 
-
 3. **Redirect to the Original URL:**
    ```bash
    curl http://localhost:8000/<base62_id>/
    ```
+
+4. **Managing the list of URLs registered in the database:**
+
+Create a super user
+
+```bash
+docker-compose exec server bash
+python manage.py createsuperuser
+```
+
+Access the admin panel and insert your credentials:
+
+```bash
+http://localhost:8000/admin/
+```
 
 ## Shortening Algorithm
 
