@@ -37,6 +37,7 @@ services:
   celery:
     image: celery5:latest
     build: .
+    working_dir: /server
     command: celery -A django_project worker --loglevel=info
     volumes:
       - ./:/server
