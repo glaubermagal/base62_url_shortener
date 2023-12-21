@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'celery',
 
-    'apps.documents',
+    'apps.urls',
 ]
 
 MIDDLEWARE = [
