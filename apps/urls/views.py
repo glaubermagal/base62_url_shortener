@@ -1,7 +1,6 @@
 from urllib.parse import urlparse
 
 from django.http import Http404
-from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import RedirectView
 from rest_framework import generics, status
 from rest_framework.response import Response
