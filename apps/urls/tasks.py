@@ -5,14 +5,6 @@ from django.utils.html import strip_tags
 
 
 @shared_task
-def fetch_html_title(url_id):
-    from .models import URLs
-    url_instance = URLs.objects.get(id=url_id)
-    html_title = get_html_title(url_instance.long_url)
-    
-    url_instance.title = strip_tags(html_title)
-    url_instance.save()
-
 def get_html_title(url):
     try:
         response = requests.get(url, timeout=10000)
