@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Django tests
         run: |
-          sudo docker-compose -f docker-compose.yml exec -T your-django-container-name python manage.py test
+          sudo docker-compose -f docker-compose.yml exec -T django_project_server python manage.py test
 
       - name: Tear down Docker Compose
         run: |
