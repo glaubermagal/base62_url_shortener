@@ -2,11 +2,13 @@ version: '3.7'
 
 services:
   redis:
+    container_name: django_project_redis
     image: redis:alpine
     ports:
       - "6379:6379"
 
   db:
+    container_name: django_project_db
     image: postgres:14.9
     ports:
       - 5432:5432
@@ -27,6 +29,7 @@ services:
       LOGGING_COLLECTOR: 'on'
 
   server:
+    container_name: django_project_server
     build: .
     working_dir: /server
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 3; done; python manage.py runserver 0.0.0.0:8000'
@@ -40,6 +43,7 @@ services:
       - db
 
   celery:
+    container_name: django_project_celery
     image: celery5:latest
     build: .
     working_dir: /server
