@@ -2,24 +2,40 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: blue_coding_test
-          POSTGRES_USER: user
-          POSTGRES_PASSWORD: password
+      redis:
+        image: redis:alpine
+        ports:
+          - "6379:6379"
+      db:
+        image: postgres:14.9
         ports:
           - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        command: postgres -D /var/lib/postgresql/data -F -c logging_collector=on
+        volumes:
+          - ./data/dev:/var/lib/postgresql/data
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U postgres"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+        environment:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: blue_coding
+          POSTGRES_HOST: db
+          PGDATA: /var/lib/postgresql/data
+          LOGGING_COLLECTOR: 'on'
 
     steps:
       - name: Checkout code
@@ -27,19 +43,19 @@ jobs:
 
       - name: Set up Docker Compose
         run: |
-          sudo docker-compose -f docker-compose.yml up -d
+          docker-compose up -d
 
       - name: Wait for services to be ready
         run: |
-          until sudo docker-compose -f docker-compose.yml exec -T django_project_server python -c "import psycopg2; conn = psycopg2.connect('dbname=blue_coding_test user=user password=password host=db'); conn.close()"; do
+          until docker-compose exec -T server python manage.py check; do
             sleep 5
             echo "Retrying..."
           done
 
       - name: Run Django tests
         run: |
-          sudo docker-compose -f docker-compose.yml exec -T django_project_server python manage.py test
+          docker-compose exec -T server python manage.py test apps/*
 
       - name: Tear down Docker Compose
         run: |
-          sudo docker-compose -f docker-compose.yml down
+          docker-compose down
