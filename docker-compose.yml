@@ -5,6 +5,7 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
+
   db:
     image: postgres:14.9
     ports:
@@ -24,6 +25,7 @@ services:
       POSTGRES_HOST: db
       PGDATA: /var/lib/postgresql/data
       LOGGING_COLLECTOR: 'on'
+
   server:
     build: .
     working_dir: /server
@@ -34,6 +36,9 @@ services:
       - 8000:8000
     depends_on:
       - db
+    links:
+      - db
+
   celery:
     image: celery5:latest
     build: .
