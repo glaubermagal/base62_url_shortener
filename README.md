@@ -90,6 +90,8 @@ Example output:
    curl http://localhost:8000/shorten/?url=<long_url>
    ```
 
+Example output:
+
 ```json
 {
     "short_url": "http://localhost:8000/y"
@@ -101,7 +103,7 @@ Example output:
    curl http://localhost:8000/<base62_id>/
    ```
 
-4. **Managing the list of URLs registered in the database:**
+4. **Managing the shortened URLs registered in the database:**
 
 Create a super user
 
