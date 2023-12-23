@@ -81,21 +81,6 @@ Example output:
         "long_url": "https://docs.python.org/3/tutorial/modules.html",
         "short_url": "http://localhost:8000/10",
         "title": "6. Modules — Python 3.12.1 documentation"
-    },
-    {
-        "long_url": "https://cloud.google.com/code/docs/vscode/auth_success",
-        "short_url": "http://localhost:8000/11",
-        "title": "Cloud Code for VS Code is now authorized to access your account  |  Google Cloud"
-    },
-    {
-        "long_url": "https://accounts.binance.com/en/register",
-        "short_url": "http://localhost:8000/12",
-        "title": "Bitcoin Exchange | Cryptocurrency Exchange | Binance"
-    },
-    {
-        "long_url": "https://jsonformatter.org/",
-        "short_url": "http://localhost:8000/13",
-        "title": "Best JSON Formatter and JSON Validator: Online JSON Formatter"
     }
 ]
 ```
