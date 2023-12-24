@@ -22,8 +22,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Set up Docker Compose
-        env:
-          BASE_URL: 'https://example.com'
         run: |
           docker-compose up -d
 

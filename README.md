@@ -1,6 +1,6 @@
 # Blue Coding Challenge Documentation
 
-Welcome to the Blue Coding Challenge documentation! This URL shortener is built using Python, Django, and PostgreSQL, with an additional Celery worker for fetching the title of input URLs and storing it in the database.
+Welcome to the Blue Coding Challenge documentation! This URL shortener is built using Python, Django, and PostgreSQL, with an additional Celery worker for fetching the title of the page from the input URLs and storing them in the database.
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ git clone git@github.com:glaubermagal/blue_coding_test.git
 cd blue_coding_test
 ```
 
-Create a local_settings.py file in django_project folder with the following content:
+Create a `local_settings.py` file in `django_project` folder and set the following constant with the url of your local server with its corresponding port. For example:
 
 ```python
 BASE_URL = 'http://localhost:8000'
@@ -81,29 +81,19 @@ Example output:
         "long_url": "https://docs.python.org/3/tutorial/modules.html",
         "short_url": "http://localhost:8000/10",
         "title": "6. Modules — Python 3.12.1 documentation"
-    },
-    {
-        "long_url": "https://cloud.google.com/code/docs/vscode/auth_success",
-        "short_url": "http://localhost:8000/11",
-        "title": "Cloud Code for VS Code is now authorized to access your account  |  Google Cloud"
-    },
-    {
-        "long_url": "https://accounts.binance.com/en/register",
-        "short_url": "http://localhost:8000/12",
-        "title": "Bitcoin Exchange | Cryptocurrency Exchange | Binance"
-    },
-    {
-        "long_url": "https://jsonformatter.org/",
-        "short_url": "http://localhost:8000/13",
-        "title": "Best JSON Formatter and JSON Validator: Online JSON Formatter"
     }
 ]
 ```
 
 2. **Shorten a URL:**
+
+The endpoint returns the existing shortened URL, or if it's not yet registered, creates a new shortened URL, inserts it in the database and returns it:
+
    ```bash
    curl http://localhost:8000/shorten/?url=<long_url>
    ```
+
+Example output:
 
 ```json
 {
@@ -116,7 +106,7 @@ Example output:
    curl http://localhost:8000/<base62_id>/
    ```
 
-4. **Managing the list of URLs registered in the database:**
+4. **Managing the shortened URLs registered in the database:**
 
 Create a super user
 

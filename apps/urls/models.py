@@ -4,9 +4,8 @@ from django.dispatch import receiver
 
 from apps.urls.utils import decimal_to_base62
 from django_project import settings
-
 from .tasks import get_html_title
-
+from django.utils.html import strip_tags
 
 class URLs(models.Model):
     base62_id = models.CharField(null=True, unique=True)
