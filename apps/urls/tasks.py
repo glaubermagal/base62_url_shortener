@@ -14,6 +14,6 @@ def get_html_title(url):
         if title_tag:
             return title_tag.string.strip()
         
-        return "No title found"
+        return ""
     except requests.RequestException as e:
         return f"Error: {str(e)}"
