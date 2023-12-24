@@ -10,9 +10,10 @@ def get_html_title(url):
         response = requests.get(url, timeout=10000)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
-        title_tag = soup.title
+        title_tag = strip_tags(soup.title)
+        
         if title_tag:
-            return title_tag.string.strip()
+            return title_tag
         
         return ""
     except requests.RequestException as e:
