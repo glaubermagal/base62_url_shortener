@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 from apps.urls.utils import decimal_to_base62
 from django_project import settings
 from .tasks import get_html_title
@@ -36,6 +37,6 @@ def generate_base62_id(sender, instance, created, **kwargs):
 @receiver(post_save, sender=URLs)
 def create_url_signal(sender, instance, created, **kwargs):
     if created:
-        html_title = get_html_title.delay(instance.long_url)
-        instance.title = strip_tags(html_title)
+        result = get_html_title.delay(instance.long_url)
+        instance.title = result.get()
         instance.save()
