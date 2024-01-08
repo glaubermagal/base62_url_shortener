@@ -1,6 +1,6 @@
-# Blue Coding Challenge Documentation
+# Base62 URL shortener Documentation
 
-Welcome to the Blue Coding Challenge documentation! This URL shortener is built using Python, Django, and PostgreSQL, with an additional Celery worker for fetching the title of the page from the input URLs and storing them in the database.
+Welcome to the Base62 URL shortener documentation! This URL shortener is built using Python, Django, and PostgreSQL, with an additional Celery worker for fetching the title of the page from the input URLs and storing them in the database.
 
 ## Table of Contents
 
