@@ -23,8 +23,8 @@ Make sure you have the following tools installed:
 Clone the repository:
 
 ```bash
-git clone git@github.com:glaubermagal/blue_coding_test.git
-cd blue_coding_test
+git clone git@github.com:glaubermagal/base62_url_shortener.git
+cd base62_url_shortener
 ```
 
 Create a `local_settings.py` file in `django_project` folder and set the following constant with the url of your local server with its corresponding port. For example:
@@ -125,4 +125,4 @@ http://localhost:8000/admin/
 
 The [shortening algorithm](/apps/urls/utils.py) is based on the [base62](https://en.wikipedia.org/wiki/Base62) numeric system. It utilizes the auto-incremented ID field of the URLs table as input to convert the numeric base, achieving the shortest possible length of a unique ID that can be used in a URL.
 
-Feel free to explore the code and contribute to the improvement of this project. If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/glaubermagal/blue_coding_test).
+Feel free to explore the code and contribute to the improvement of this project. If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/glaubermagal/base62_url_shortener).
