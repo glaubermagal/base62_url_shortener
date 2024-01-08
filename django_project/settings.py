@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blue_coding',
+        'NAME': 'base62_url_shortener',
         'USER': 'user',
         'PASSWORD': 'password',
         'HOST': 'db',

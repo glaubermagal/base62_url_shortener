@@ -21,7 +21,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: blue_coding
+      POSTGRES_DB: base62_url_shortener
       POSTGRES_HOST: db
       PGDATA: /var/lib/postgresql/data
       LOGGING_COLLECTOR: 'on'
